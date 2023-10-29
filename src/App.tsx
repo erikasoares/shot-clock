@@ -1,29 +1,42 @@
-import React from 'react';
+import React from "react";
+import Stack from "@mui/material/Stack";
+import ShotClock from "./components/shot-clock";
+import useChangeHomeState from "./hooks/home-hooks";
+import useChangeVisitorState from "./hooks/visitor-hooks";
 
 function App() {
+  const { onClickStopHome, onClickPlayHome, clockValueHome } =
+    useChangeHomeState();
+
+  const { onClickStopVisitor, onClickPlayVisitor, clockValueVisitor } =
+    useChangeVisitorState();
+
   return (
-    <div className="text-center p-2">
-      <h1 className="font-bold text-3xl text-gray-800 my-2">
-        Create a Shot Clock{" "}
-        <span role="img" aria-label="Basketball">
-          🏀
-        </span>
-      </h1>
-      <p className="my-2 border-t-2 p-4 mb-6">
-        A basketball field has 2 shot clocks, one above each rim. Both countdown 24 seconds.
-        Referees can stop and/or reset clocks when needed.
-      </p>
-      <div className="my-2 font-medium text-xl m-8">
-        <p className="bg-gray-800 text-white shadow-md rounded p-4">
-          As a user, I want to see 2 clocks with pause & reset buttons, so I can manage the game.
-        </p>
-        <p className="text-gray-700 italic text-sm p-2">
-          Feel free to create new files where needed. Using TypeScript is a nice-to-have. Tailwind
-          is available if you wish to use it.
-        </p>
-      </div>
-      <hr className="border" />
-    </div>
+    <Stack
+      direction={"row"}
+      sx={{ justifyContent: "center", p: 8 }}
+      spacing={3}
+    >
+      <ShotClock
+        clockId={"clockHome"}
+        startId={"startHome"}
+        stopId={"stopHome"}
+        pauseId={"pauseHome"}
+        displayTime={clockValueHome}
+        onPlay={(value: boolean) => onClickPlayHome(value)}
+        onStop={() => onClickStopHome()}
+      />
+
+      <ShotClock
+        clockId={"clockVisitor"}
+        startId={"startVisitor"}
+        stopId={"stopVisitor"}
+        pauseId={"pauseVisitor"}
+        displayTime={clockValueVisitor}
+        onPlay={(value: boolean) => onClickPlayVisitor(value)}
+        onStop={() => onClickStopVisitor()}
+      />
+    </Stack>
   );
 }
 

@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^5.7.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.15",
+    "@mui/material": "^5.14.15",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -35,7 +39,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.51",
-    "@types/react-dom": "^16.9.8"
+    "@types/react-dom": "^16.9.8",
+    "cypress": "^13.3.3"
   },
   "keywords": [],
   "description": ""
